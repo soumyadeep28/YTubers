@@ -3,8 +3,10 @@ from webpages import models
 # Create your views here.
 def home(request):
     sliders = models.Slider.objects.all()
+    teams = models.Team.objects.all()
     data ={
-        'sliders' : sliders
+        'sliders' : sliders,
+        'teams' : teams
     }
     return render(request , 'webpages/home.html' , data )
 
