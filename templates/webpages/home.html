@@ -3,7 +3,11 @@
 
 {% block content %}
 <h2>Homepage</h2>
+
+
 <main class="home">
+
+  <!-- Slide section -->
     <div class="top" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
 
       {% for slide in sliders %}
@@ -30,7 +34,7 @@
 
     </div>
 
-
+<!-- search section -->
     <section class="container d-flex justify-content-center align-items-center mt-4">
       <form class="row text-center">
         <div class="col-md-auto">
@@ -45,6 +49,8 @@
       </form>
     </section>
 
+
+    <!-- Featured youtuber section -->
     <section class="container mt-3">
       <h3 class="text-center">Featured YTubers</h3>
       <p class="pt-2 pb-3 text-center">YTubers that did extra ordinary last month</p>
@@ -216,7 +222,7 @@
 
 
 
-
+<!-- Latest onboard youtuber section -->
     <section class="container mt-5 mb-5">
       <h3 class="text-center">Latest On Board YTubers</h3>
       <p class="pt-2 pb-3 text-center">YTubers who recently got onboard with us</p>
@@ -419,20 +425,20 @@
 
 
 
-
+<!-- Team  section -->
     <section class="container mt-3">
       <h3 class="text-center">Our Amazing Team</h3>
       <p class="pt-2 pb-3 text-center">Meet the team</p>
       <div class="team slider" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
 
         {% for team in teams %}
-        <!-- team 1 -->
+     
         <div class="card border-0 text-center  ml-3 mr-3">
           <img src="{{ team.photo.url }}  " width='100' class="card-img-top" alt="team-member">
           <div class="card-body">
             <h5 class="card-title">{{team.first_name}} {{team.last_name}}</h5>
             <p class="card-text">{{team.role}}</p>
-            <a href="#" class="btn btn-accent btn-block">Go somewhere</a>
+            <a href="#" class="btn btn-accent btn-block">Drop a mail </a>
             <div class="text-center mt-2">
              <a href="https://{{team.fb_link}}"> <button class="btn btn-accent"> <i class="fab fa-facebook-f fa-lg	"></i> </button> </a>
             <a href="https://{{team.fb_link}}"><button class="btn btn-accent"> <i class="fab fa-linkedin-in fa-lg	"></i> </button></a>
