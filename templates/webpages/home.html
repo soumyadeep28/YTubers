@@ -428,7 +428,7 @@
         {% for team in teams %}
         <!-- team 1 -->
         <div class="card border-0 text-center  ml-3 mr-3">
-          <img src="{{ team.photo.url }}" class="card-img-top" alt="team-member">
+          <img src="{{ team.photo.url }}  " width='100' class="card-img-top" alt="team-member">
           <div class="card-body">
             <h5 class="card-title">{{team.first_name}} {{team.last_name}}</h5>
             <p class="card-text">{{team.role}}</p>
