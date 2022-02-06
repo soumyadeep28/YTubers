@@ -52,7 +52,7 @@ class Youtubers(models.Model):
     crew =models.CharField(max_length=255 , choices=crew_choices)
     camera_type = models.CharField(max_length=10 , choices=camera_choices)
     subs_count = models.IntegerField()
-    category = models.CharField(max_length=255)
+    category = models.CharField(max_length=255 ,choices= catagory_choices)
     is_featured = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=datetime.now , blank=True )
 
