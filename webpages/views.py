@@ -25,3 +25,4 @@ def services(request):
 
 def contacts(request):
     return render(request, 'webpages/contacts.html') 
+    
