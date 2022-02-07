@@ -14,17 +14,32 @@ def logout_user(request):
 
 def register(request):
     if request.method == 'POST':
-        firestname = request.POST['firstname']
+        firstname = request.POST['firstname']
         lastname = request.POST['lastname']
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
         
-        user =User.objects.create_user(firstname = firestname , lastname=lastname , username=username , email=email , password = password )
-        user.save()
-        messages.success(request ,'account created successfully' )
-        return redirect('login')
+        if password ==confirm_password :
+            if User.objects.filter(username = username).exists() :
+                messages.error(request , 'Same user is already there')
+                return redirect('register')
+            elif User.objects.filter(email=email).exists() :
+                messages.error(request , 'Email already exits')
+                return redirect('register')
+            else:
+                user =User.objects.create_user(first_name = firstname , last_name=lastname , username=username , email=email , password = password )
+                user.save()
+                messages.success(request ,'account created successfully' )
+                return redirect('login')
+
+        else:
+            messages.error(request , 'Password do not match')
+            return redirect('register')
+
+
+        
 
     return render(request , 'accounts/register.html' )
 
