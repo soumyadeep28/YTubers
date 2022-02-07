@@ -6,6 +6,21 @@ from django.contrib import messages , auth
 
 # Create your views here.
 def login(request):
+    if request.method == 'POST':
+        user = request.POST['username']
+        paswd = request.POST['password']
+
+
+        user =auth.authenticate(username=user , password=paswd )
+        if user is not None :
+            auth.login(request , user)
+            messages.success(request , 'You are logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(request , 'Invalid credential')
+            return redirect('login')
+
+
     return render(request , 'accounts/login.html' )
 
 def logout_user(request):
