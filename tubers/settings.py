@@ -28,9 +28,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+#mention all the function of login is required then redirect if logged in
+LOGIN_REDIRECT_URL='dashboard'
+LOGOUT_REDIRECT_URL = 'login'
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 # Application definition
-
 INSTALLED_APPS = [
     'ckeditor',
     'accounts.apps.AccountsConfig',
@@ -43,6 +55,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #added all the application for the django-allauth functionability 
+    'django.contrib.sites',
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    #what ever the files are needed we have to add the features 
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +163,7 @@ STATICFILES_DIRS = [
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+SITE_ID = 1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
