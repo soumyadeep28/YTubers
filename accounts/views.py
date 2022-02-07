@@ -20,7 +20,7 @@ def login(request):
             messages.success(request , 'You are logged in')
             return redirect('dashboard')
         else:
-            messages.error(request , 'Invalid credential')
+            messages.warning(request , 'Invalid credential')
             return redirect('login')
 
 
@@ -41,10 +41,10 @@ def register(request):
         
         if password ==confirm_password :
             if User.objects.filter(username = username).exists() :
-                messages.error(request , 'Same user is already there')
+                messages.warning(request , 'Same user is already there')
                 return redirect('register')
             elif User.objects.filter(email=email).exists() :
-                messages.error(request , 'Email already exits')
+                messages.warning(request , 'Email already exits')
                 return redirect('register')
             else:
                 user =User.objects.create_user(first_name = firstname , last_name=lastname , username=username , email=email , password = password )
@@ -53,7 +53,7 @@ def register(request):
                 return redirect('login')
 
         else:
-            messages.error(request , 'Password do not match')
+            messages.warning(request , 'Password do not match')
             return redirect('register')
 
 
