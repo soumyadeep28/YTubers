@@ -45,6 +45,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # Application definition
 INSTALLED_APPS = [
     'ckeditor',
+    'contactowner.apps.ContactownerConfig',
     'hiretubers.apps.HiretubersConfig',
     'accounts.apps.AccountsConfig',
     'youtubers.apps.YoutubersConfig',
