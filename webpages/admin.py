@@ -13,6 +13,13 @@ class TeamAdmin(admin.ModelAdmin):
     list_filter = ('role',)
 
 
+class Sliderpannel(admin.ModelAdmin):
+    def myphoto(self ,object):
+        
+        return format_html('<img src="{}" width="40" />'.format(object.photo.url))
+
+
+    list_display = ( 'headline' , 'buttontext' , 'myphoto' )
 # Register your models here.
-admin.site.register(models.Slider)    
+admin.site.register(models.Slider , Sliderpannel)    
 admin.site.register(models.Team , TeamAdmin)
